@@ -8,18 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Install Dependencies') {
-            steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'echo "No tests yet"'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG .'
