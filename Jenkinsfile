@@ -10,7 +10,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'YOUR_GITHUB_REPO_LINK'
+                git 'https://github.com/Anirudhpurohit302006/ML_Project-for-summer-training.git'
             }
         }
 
