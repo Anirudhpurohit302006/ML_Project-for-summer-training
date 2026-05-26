@@ -8,12 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/Anirudhpurohit302006/ML_Project-for-summer-training.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'pip install -r requirements.txt'
