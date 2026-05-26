@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+
+  web:
+    build: .
+    container_name: expense-ai-web
+
+    ports:
+      - "5000:5000"
+
+    environment:
+      SECRET_KEY: supersecretkey
+      MYSQL_USER: expense_user
+      MYSQL_PASSWORD: expense_pass
+      MYSQL_HOST: db
+      MYSQL_DATABASE: expense_db
+      MYSQL_PORT: 3306
+
+    depends_on:
+      db:
+        condition: service_started
+
+    command: sh -c "sleep 15 && python run.py"
+
+    volumes:
+      - .:/app
+
+  db:
+    image: mysql:8
+
+    container_name: expense-ai-db
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: expense_db
+      MYSQL_USER: expense_user
+      MYSQL_PASSWORD: expense_pass
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

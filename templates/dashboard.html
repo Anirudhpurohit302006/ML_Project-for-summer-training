@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+
+<div class="row mt-4">
+  <div class="col-md-3"><div class="card p-3 shadow-sm">Total Spent: ₹{{ total_spent }}</div></div>
+  <div class="col-md-3"><div class="card p-3 shadow-sm">Savings Rate: {{ (savings_rate*100)|round(2) }}%</div></div>
+  <div class="col-md-3"><div class="card p-3 shadow-sm">Risk: {{ risk_label }}</div></div>
+  <div class="col-md-3"><div class="card p-3 shadow-sm">Safety Net: ₹{{ safety_net_amount }}</div></div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="card p-3 shadow-sm">
+      <h5>Why it matters</h5>
+      <p>Confidence: {{ (confidence*100)|round(2) }}%</p>
+      <p>Goals created: {{ goals }}</p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card p-3 shadow-sm">
+      <h5>Recent Expenses</h5>
+      <ul class="list-group">
+        {% for e in expenses[-5:] %}
+          <li class="list-group-item">{{ e.category }} - ₹{{ e.amount }} - {{ e.expense_date }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+Flask-Migrate
+pandas
+numpy
+scikit-learn
+joblib
+mysql-connector-python
+python-dotenv
+email-validator
